@@ -85,7 +85,7 @@ Assets/!_Project_Main/2.Scripts/
 - Shotgun (샷건)
 - Rifle (소총)
 
-### 🤖 적 AI 시스템
+### 🤖 적 시스템
 
 State Machine 패턴으로 구현된 3가지 적 타입:
 
