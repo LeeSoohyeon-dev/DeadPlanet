@@ -27,7 +27,7 @@
 ## 📁 프로젝트 구조
 
 ```
-Assets/!_Project_Main/2.Scripts/
+2.Scripts/
 │
 ├── 🎮 Character/
 │   ├── Player/
