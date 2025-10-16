@@ -167,7 +167,6 @@ GameEvents (정적 클래스) - 느슨한 결합
 
 - **PlayerAnimationEvents**: 재장전, 무기 교체 타이밍 등
 - **Enemy_AnimationEvents**: 공격 판정, 수류탄 투척, 점프 착지 등
-- **수동 제어**: 애니메이션 중 NavMeshAgent 이동/회전
 
 #### 무기별 레이어 시스템
 
