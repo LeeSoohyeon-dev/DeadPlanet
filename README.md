@@ -5,14 +5,12 @@
 ---
 
 ## 📱 다운로드
-<div align="center">
-  <a href="[YOUR_GOOGLE_PLAY_LINK](https://play.google.com/store/apps/details?id=com.in.deadplanet)">
-    <img src="https://play.google.com/intl/en_us/badges/static/images/badges/ko_badge_web_generic.png" alt="Google Play에서 다운로드" height="80"/>
-  </a>
-  <a href="[YOUR_GOOGLE_PLAY_LINK](https://play.google.com/store/apps/details?id=com.in.deadplanet)">
-    <img src="./images/qr-code.png" alt="QR Code" height="80"/>
-  </a>
-</div>
+<a href="https://play.google.com/store/apps/details?id=com.in.deadplanet">
+  <img src="https://play.google.com/intl/en_us/badges/static/images/badges/ko_badge_web_generic.png" alt="Google Play에서 다운로드" height="80"/>
+</a>
+<a href="https://play.google.com/store/apps/details?id=com.in.deadplanet">
+  <img src="./images/qr-code.png" alt="QR Code" height="80"/>
+</a>
 
 ---
 
