@@ -1,10 +1,10 @@
-# 🌌 Dead Planet
+# Dead Planet
 
 **Dead Planet**은 Unity 6로 제작된 모바일 3인칭 탑다운 슈팅 게임입니다. 외계 행성을 배경으로 적들을 처치하는 것이 목표입니다.
 
 ---
 
-## 📱 다운로드
+## 다운로드
 <a href="https://play.google.com/store/apps/details?id=com.in.deadplanet" style="text-decoration: none;">
   <img src="https://play.google.com/intl/en_us/badges/static/images/badges/ko_badge_web_generic.png" alt="Google Play에서 다운로드" height="80"/>
 </a>
@@ -14,16 +14,16 @@
 
 ---
 
-### ✨ 주요 특징
+### 주요 특징
 
-- 🎯 **무기 교체 시스템** - 5종의 무기를 자유롭게 교체
-- 🤖 **다양한 적** - State Machine 기반의 다양한 능력을 가진 적들
-- 🎨 **Animation Rigging** - IK를 활용한 무기별 리깅
-- ⚡ **성능 최적화** - 오브젝트 풀링 및 이벤트 기반 아키텍처
+- **무기 교체 시스템** - 5종의 무기를 자유롭게 교체
+- **다양한 적** - State Machine 기반의 다양한 능력을 가진 적들
+- **Animation Rigging** - IK를 활용한 무기별 리깅
+- **성능 최적화** - 오브젝트 풀링 및 이벤트 기반 아키텍처
 
 ---
 
-## 🛠️ 개발 환경
+## 개발 환경
 
 | 항목      | 내용                                  |
 | ------- | ----------------------------------- |
@@ -34,12 +34,12 @@
 
 ---
 
-## 📁 프로젝트 구조
+## 프로젝트 구조
 
 ```
 2.Scripts/
 │
-├── 🎮 Character/
+├── Character/
 │   ├── Player/
 │   │   ├── Core/              # 플레이어 핵심 로직
 │   │   ├── Combat/            # 전투, 무기, 이동
@@ -56,27 +56,27 @@
 │   │
 │   └── Health/                # 공통 체력 시스템
 │
-├── 🔫 Weapons/
+├── Weapons/
 │   ├── Core/                  # 무기, 총알 기본 로직
 │   ├── Model/                 # 무기 모델 데이터
 │   └── EnemyWeaponData/       # 적 무기 데이터
 │
-├── ⚙️ GameSystem/
+├── GameSystem/
 │   ├── Game/                  # 게임 시스템 및 이벤트
 │   ├── Audio/                 # 오디오 매니저
 │   ├── Object Pool/           # 오브젝트 풀링
 │   └── Interface/             # 공통 인터페이스
 │
-├── 🎨 UI/                     # 사용자 인터페이스
-├── 🎯 Mission/                # 미션 시스템
-└── 🔗 Interaction/            # 상호작용 오브젝트
+├── UI/                     # 사용자 인터페이스
+├── Mission/                # 미션 시스템
+└── Interaction/            # 상호작용 오브젝트
 ```
 
 ---
 
-## 🎮 핵심 시스템
+## 핵심 시스템
 
-### 🔫 무기 시스템
+### 무기 시스템
 
 
 #### 시스템 특징
@@ -95,11 +95,11 @@
 - Shotgun (샷건)
 - Rifle (소총)
 
-### 🤖 적 시스템
+### 적 시스템
 
 State Machine 패턴으로 구현된 3가지 적 타입:
 
-#### 1️⃣ 근접 적 (Melee)
+#### 근접 적 (Melee)
 
 ```
 🗡️ 특징
@@ -109,34 +109,34 @@ State Machine 패턴으로 구현된 3가지 적 타입:
 - Shield 타입: 방패 내구도 시스템
 ```
 
-#### 2️⃣ 원거리 적 (Range)
+#### 원거리 적 (Range)
 
 ```
-🎯 특징
+특징
 - 5가지 무기와 무기 타입별 리깅, 레이어
 - 조준 시스템 (정지 사격 → 전진 → 정지 사격)
 
-🔥 특수 능력
+특수 능력
 - Unstoppable: 무한 탄약 + 느린 전진 사격
 - Grenade: 포물선 계산 수류탄 투척
 ```
 
-#### 3️⃣ 보스 (Boss)
+#### 보스 (Boss)
 
 ```
-💀 다양한 공격 패턴
+다양한 공격 패턴
 - 근접 공격 (다양한 애니메이션)
 - 화염방사기 (Particle + 지속 대미지)
 - 점프 공격 (광역 대미지 + 넉백)
 
-⚙️ 구현
+구현
 - Physics.OverlapSphere 판정
 - AddExplosionForce 물리 효과
 ```
 
 ---
 
-## 🔧 핵심 설계 패턴
+## 핵심 설계 패턴
 
 ### 1. State Machine 패턴
 
