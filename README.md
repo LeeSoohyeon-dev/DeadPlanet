@@ -179,11 +179,3 @@ GameEvents (정적 클래스) - 느슨한 결합
 
 - **Player**: 4개 레이어 (handgun, assault, shotgun, common)
 - **Enemy_Range**: 3개 레이어 (assault, handgun, common)
-
----
-
-## 📝 라이선스
-
-이 프로젝트는 개인 포트폴리오 목적으로 제작되었습니다.
-
----
