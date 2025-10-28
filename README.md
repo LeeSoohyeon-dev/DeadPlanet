@@ -11,7 +11,7 @@
 <a href="https://play.google.com/store/apps/details?id=com.in.deadplanet" style="text-decoration: none;">
  <img src="./images/qr-code.png" alt="QR Code" height="80" style="display: inline-block; vertical-align: middle; border: none;"/>
 </a>
-
+<a href="https://play.google.com/store/apps/details?id=com.in.deadplanet"><img src="./images/qr-code.png" alt="QR Code" height="40"/></a>
 ---
 
 ### ✨ 주요 특징
