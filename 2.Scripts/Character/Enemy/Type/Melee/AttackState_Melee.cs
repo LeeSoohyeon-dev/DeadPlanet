@@ -1,0 +1,115 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+public class AttackState_Melee : EnemyState
+{
+    private Enemy_Melee enemy;
+    private Vector3 attackDirection;
+    private float attackMoveSpeed;
+
+    private const float MAX_ATTACK_DISTANCE = 50f;
+
+    public AttackState_Melee(Enemy enemyBase, EnemyStateMachine stateMachine, string animBoolName) : base(enemyBase, stateMachine, animBoolName)
+    {
+        enemy = enemyBase as Enemy_Melee;
+    }
+
+    public override void Enter()
+    {
+        base.Enter();
+        enemy.UpdateAttackData();
+        enemy.visuals.EnableWeaponModel(true);
+        enemy.visuals.EnableWeaponTrail(true);
+
+        attackMoveSpeed = enemy.attackData.moveSpeed;
+        enemy.anim.SetFloat("AttackAnimationSpeed", enemy.attackData.animationSpeed);
+        enemy.anim.SetFloat("AttackIndex", enemy.attackData.attackIndex);
+        enemy.anim.SetFloat("SlashAttackIndex", Random.Range(0, 3));
+
+        enemy.agent.isStopped = true;
+        enemy.agent.velocity = Vector3.zero;
+
+        attackDirection = enemy.transform.position + (enemy.transform.forward * MAX_ATTACK_DISTANCE);
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        SetupNextAttack();
+        enemy.visuals.EnableWeaponTrail(false);
+    }
+
+    private void SetupNextAttack()
+    {
+        int recoveryIndex = IsPlayerClose() ? 1 : 0;
+
+        enemy.anim.SetFloat("RecoveryIndex", recoveryIndex);
+        enemy.attackData = UpdatedAttackData();
+    }
+
+    public override void Update()
+    {
+        base.Update();
+
+        if (enemy.movement.IsManualRotationActive())
+        {
+            enemy.movement.FaceTarget(enemy.player.transform.position);
+            attackDirection = enemy.transform.position + (enemy.transform.forward * MAX_ATTACK_DISTANCE);
+        }
+
+        if (enemy.movement.IsManualMovementActive())
+        {
+            enemy.transform.position =
+                Vector3.MoveTowards(enemy.transform.position, attackDirection, attackMoveSpeed * Time.deltaTime);
+        }
+
+        if (hasTriggerCalled)
+        {
+            if (enemy.IsPlayerInAttackRange())
+                stateMachine.ChangeState(enemy.recoveryState);
+            else
+                stateMachine.ChangeState(enemy.chaseState);
+        }
+    }
+
+    private bool IsPlayerClose() => Vector3.Distance(enemy.transform.position, enemy.player.transform.position) <= 1;
+
+    private AttackData_EnemyMelee UpdatedAttackData()
+    {
+        List<AttackData_EnemyMelee> attacks = enemy.attackList;
+
+        if (attacks == null || attacks.Count == 0)
+            return enemy.attackData;
+
+        bool excludeCharge = IsPlayerClose();
+
+        int validCount = 0;
+        foreach (AttackData_EnemyMelee attack in attacks)
+        {
+            if (excludeCharge && attack.attackType == AttackType_Melee.Charge)
+                continue;
+
+            validCount++;
+        }
+
+        if (validCount == 0)
+        {
+            excludeCharge = false;
+            validCount = attacks.Count;
+        }
+
+        int targetIndex = Random.Range(0, validCount);
+        foreach (AttackData_EnemyMelee attack in attacks)
+        {
+            if (excludeCharge && attack.attackType == AttackType_Melee.Charge)
+                continue;
+
+            if (targetIndex == 0)
+                return attack;
+
+            targetIndex--;
+        }
+
+        return attacks[0];
+    }
+}
